@@ -1,0 +1,57 @@
+body
+	align-items center
+	background-color #f6f6f6
+	display flex
+	font-size 14px
+	justify-content center
+	margin 0px
+	min-height 100vh
+
+.mtop16
+	margin-top 16px
+.box
+	background-color #fff
+	border-radius 8px
+	boder 1px solid #d6d6d6
+	position relative
+	//padding 16px
+	width 500px
+	.btn-success
+		width 100%
+		background-color #E85722
+		border 0px
+	.form-control
+		&:focus
+		&:active
+			outline none
+			box-shadow none
+	.inside
+		padding 10px
+	.header
+		background-color #8C0CCB
+		border-radius 8px 8px 0px 0px
+		padding 16px
+		a
+			img 
+				display block
+				margin 0px auto
+				width 35%
+	.footer
+		text-align center
+		a
+			display inline-block
+			font-size .8em
+			&:last-child
+				margin-left 24px
+/*
+.box_login 
+	left calc(50% - 250px)
+	top calc(50% - 200px)
+
+.box_register
+	left calc(50% - 250px)
+	top calc(50% - 270px)
+*/
+@media only screen and (max-width 728px)
+	.box
+		width 88%

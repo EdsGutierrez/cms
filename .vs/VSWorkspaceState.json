@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Models",
+    "\\public",
+    "\\public\\static",
+    "\\resources",
+    "\\resources\\views"
+  ],
+  "SelectedNode": "\\resources\\views\\cart.blade.php",
+  "PreviewInSolutionExplorer": false
+}
