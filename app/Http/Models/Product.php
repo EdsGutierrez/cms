@@ -17,7 +17,7 @@ class Product extends Model
 
     //tener una relacion de uno a uno
     public function cat(){
-        return $this->hasOne(Category::class, 'id', 'category_id');
+        return $this->hasOne(Category::class, 'id', 'category_id')->withTrashed();
     }
 
     //funcio  para obtener la sybcategoria de cada producto

@@ -13,7 +13,7 @@ Route::prefix('/admin')->group(function () {
 	//Module users
 	//Route::get('/users', 'Admin\UserController@getUsers')->name('user_list');
 	Route::get('/users/{status}', 'Admin\UserController@getUsers')->name('user_list');
-	Route::get('/user/{id}/edit', 'Admin\UserController@getUserEdit')->name('user_edit');
+	Route::get('/user/{id}/view', 'Admin\UserController@getUserView')->name('user_view');
 	Route::post('/user/{id}/edit', 'Admin\UserController@postUserEdit')->name('user_edit'); //PARA DAR PERMISOS AL USUARIO Y EN LA PARTE DE EDITAR USUARIO MOSTRAR EL BOTON GUARDADR USUSARIO DESPUES DE HABER SIDO MODIFICADO
 	Route::get('/user/{id}/banned', 'Admin\UserController@getUserBanned')->name('user_banned');	//PARA SUSPENDER A UN USUARIO
 	Route::get('/user/{id}/permissions', 'Admin\UserController@getUserPermissions')->name('user_permissions');	//===PERSMISOS DE USUARIOS
@@ -70,6 +70,11 @@ Route::prefix('/admin')->group(function () {
 	Route::post('/coverage/state/{id}/edit', 'Admin\CoverageController@postCoverageStateEdit')->name('coverage_edit');
 	Route::get('/coverage/{id}/cities', 'Admin\CoverageController@getCoverageCities')->name('coverage_list');
 	Route::get('/coverage/{id}/delete', 'Admin\CoverageController@getCoverageDelete')->name('coverage_delete');
+
+	//Ordenes
+	Route::get('/orders/{status}/{type}', 'Admin\OrderController@getList')->name('orders_list');
+	Route::get('/order/{order}/view', 'Admin\OrderController@getOrder')->name('order_view');
+	Route::post('/order/{order}/view', 'Admin\OrderController@postOrderStatusUpdate')->name('order_view');
 
 	//JavaScript Request
 	Route::get('/md/api/load/subcategories/{parent}', 'Admin\ApiController@getSubCategories');

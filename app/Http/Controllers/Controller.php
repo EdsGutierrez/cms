@@ -9,9 +9,12 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Http\Models\Order;
 use App\Mail\OrderSendDetails;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+
+
 class Controller extends BaseController
 {
-	use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     //Para enviar detalles de la orden vdo=163
     public function getOrderEmailDetails($orderid)
@@ -19,9 +22,34 @@ class Controller extends BaseController
         $order = Order::find($orderid);
         $data = ['order' => $order];
         //Mail::to($order->getUser->email)->send(new OrderSendDetails($data));
-        Mail::to('edsonpruebassistemas@gmail.com')->send(new OrderSendDetails($data));
-        //return view('emails.order_details', $data);
-        //return $orderid;
+
+        //foreach ($this->getAdminEmails() as $admin):
+            //$data = ['order' => $order, 'name' => $admin->name . '' . $admin->lastname];
+            Mail::to('edsonpruebassistemas@gmail.com')->send(new OrderSendDetails($data));
+        //endforeach;
+
+    }
+
+    //nose qeu VIDEOES PERO IMPLEMENTE EN EL 169
+    public function getAdminEmails()
+    {
+        return DB::table('users')->where('role', '1')->get();
+    }
+
+    //vid: 169
+    public function getProcessOrder($id){
+        $order = ORder::find($id);
+        $order->o_number = $this->getOrderNumberGenerate();
+        $order->status = '1';
+        $order->request_at = date('Y-m-d h:i:s');
+        $order->save();
+    }
+
+    public function getOrderNumberGenerate()
+    {
+        $orders = Order::where('status', '>', '0')->count();
+        $orderNumber = $orders + 1;
+        return $orderNumber;
     }
 
 }

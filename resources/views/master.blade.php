@@ -45,7 +45,7 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-    <script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"> </script>
+    <script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"></script>
     <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -82,7 +82,7 @@
     <nav class="navbar navbar-expand-lg shadow">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"><img
-                    src="{{ url('/static/images/logotipo - copia.png') }}"></a>
+                    src="{{ url('/static/images/logotipo.png') }}"></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigationMain"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,57 +110,64 @@
                             <span> Contactos</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/cart') }}" class="nav-link lk-cart"><i class="fas fa-shopping-cart"></i><span
-                                class="carnumber">
+                        <a href="{{ url('/cart') }}" class="nav-link lk-cart"><i
+                                class="fas fa-shopping-cart"></i><span class="carnumber">
                                 0</span></a>
                     </li>
 
                     @if (Auth::guest())
-                    <li class="nav-item link-acc">
-                        <a href="{{ url('/login') }}" class="nav-link btn"><i class="fas fa-fingerprint"></i>
-                            Ingresar</a>
-                        <a href="{{ url('/register') }}" class="nav-link btn"><i class="far fa-user-circle"></i> Crear
-                            cuenta</a>
-                    </li>
+                        <li class="nav-item link-acc">
+                            <a href="{{ url('/login') }}" class="nav-link btn"><i class="fas fa-fingerprint"></i>
+                                Ingresar</a>
+                            <a href="{{ url('/register') }}" class="nav-link btn"><i class="far fa-user-circle"></i>
+                                Crear
+                                cuenta</a>
+                        </li>
                     @else
-                    <li class="nav-item link-acc link-user dropdown">
-                        <a href="{{ url('/login') }}" class="nav-link btn dropdown-toggle" id="navbarDropdown"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            @if (is_null(Auth::user()->avatar)) <img
-                                src="{{ url('/static/images/default-avatar.png') }}">
-                            @else
-                            <img src="{{ url('/uploads_users/' . Auth::id() . '/av_' . Auth::user()->avatar) }}">
-                            @endif
-                            Hola: {{ Auth::user()->name }}
-                        </a>
-                        <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
-                            @if (Auth::user()->role == '1')
-                            <li><a class="dropdown-item" href="{{ url('/admin') }}"><i
-                                        class="fas fa-chalkboard-teacher"></i> Administración
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            @endif
+                        <li class="nav-item link-acc link-user dropdown">
+                            <a href="{{ url('/login') }}" class="nav-link btn dropdown-toggle" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if (is_null(Auth::user()->avatar))
+                                    <img src="{{ url('/static/images/default-avatar.png') }}">
+                                @else
+                                    <img
+                                        src="{{ url('/uploads_users/' . Auth::id() . '/av_' . Auth::user()->avatar) }}">
+                                @endif
+                                Hola: {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+                                @if (Auth::user()->role == '1')
+                                    <li><a class="dropdown-item" href="{{ url('/admin') }}"><i
+                                                class="fas fa-chalkboard-teacher"></i> Administración
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endif
 
-                            <li><a class="dropdown-item" href="{{ url('/account/address') }}"><i
-                                        class="fas fa-map-marker-alt"></i> Mis direcciones
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url('/account/favorites') }}"><i
-                                        class="fas fa-heart"></i> Favoritos
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url('/account/edit') }}"><i
-                                        class="fas fa-address-card"></i> Editar perfil
-                                </a>
-                            </li>
+                                <li><a class="dropdown-item" href="{{ url('/account/history/orders') }}"><i
+                                            class="fas fa-history"></i> Historial de compras
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ url('/account/address') }}"><i
+                                            class="fas fa-map-marker-alt"></i> Mis direcciones
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ url('/account/favorites') }}"><i
+                                            class="fas fa-heart"></i> Favoritos
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ url('/account/edit') }}"><i
+                                            class="fas fa-address-card"></i> Editar perfil
+                                    </a>
+                                </li>
 
-                            <li><a class="dropdown-item" href="{{ url('/logout') }}"><i class="fas fa-sign-out-alt"></i>
-                                    Cerrar sesión</a></li>
-                        </ul>
-                    </li>
+                                <li><a class="dropdown-item" href="{{ url('/logout') }}"><i
+                                            class="fas fa-sign-out-alt"></i>
+                                        Cerrar sesión</a></li>
+                            </ul>
+                        </li>
 
                     @endif
 
@@ -171,24 +178,25 @@
     </nav>
 
     @if (Session::has('message'))
-    <div class="container">
-        <div class="alert alert-{{ Session::get('typealert') }} mtop16" style="display:block; margin-bottom: 16px;">
-            {{ Session::get('message') }}
-            @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li> {{ $error }}</li>
-                @endforeach
-            </ul>
-            @endif
-            <script>
-                $('.alert').slideDown();
+        <div class="container">
+            <div class="alert alert-{{ Session::get('typealert') }} mtop16"
+                style="display:block; margin-bottom: 16px;">
+                {{ Session::get('message') }}
+                @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li> {{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+                <script>
+                    $('.alert').slideDown();
                     setTimeout(function() {
                         $('.alert').slideUp();
                     }, 10000);
-            </script>
+                </script>
+            </div>
         </div>
-    </div>
     @endif
 
     <div class="wrapper">

@@ -168,6 +168,23 @@ a
 			font-size 2em
 			text-align center
 			width 100%
+
+	.list-group
+		border-radius 0px !important
+		a.list-group-item
+			border-left 0px
+			border-right 0px
+			.badge
+				float right
+			&:first-child
+				border-top 0px
+			&:last-child
+				border-bottom 0px
+		a.active
+			.badge
+				background #fff !important
+				color #0d6efd
+
 .opts
 	overflow hidden
 	a
@@ -279,3 +296,58 @@ a
 	h1
 		font-size 1.6em
 		font-weight bold
+
+.order
+	.profile
+		.photo
+			display block
+			width 100%
+			img
+				display block
+				margin 0px auto
+				width 96px
+		.info
+			ul
+				list-style none
+				li
+					margin-bottom 4px
+
+	.edswitch
+		background-color #f0f0f0
+		border-radius 20.4px
+		overflow hidden
+		padding 4px
+		a
+			border-radius 16.4px
+			display block
+			float left
+			font-size .8em
+			text-align center
+			padding 8px
+			width 49%
+			&:hover
+				background-color #0d6efd
+				color #fff
+			&:last-child
+				margin-left 2%
+		a.active
+			background-color #0d6efd
+			color #fff
+
+.payments_methods
+	a
+		border-radius 6px
+		border 1px solid #f6f6f6
+		color #333
+		display block
+		margin-bottom 6px
+		padding 8px 16px
+		width 100%
+		&:last-child
+			margin-bottom 0px
+		&:hover
+			background-color #0d6efd
+			color #fff
+	a.active
+		background-color #0d6efd
+		color #fff

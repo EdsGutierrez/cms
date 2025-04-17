@@ -71,10 +71,10 @@
                                 <td>{{ getUserStatusArray(null, $user->status) }}</td>
                                 <td>
                                     <div class="opts">
-                                        @if (kvfj(Auth::user()->permissions, 'user_edit'))
-                                            <a href="{{ url('/admin/user/' . $user->id . '/edit') }}"
-                                                data-toggle="tooltip" data-placement="top" title="Editar">
-                                                <i class="fas fa-edit"></i>
+                                        @if (kvfj(Auth::user()->permissions, 'user_view'))
+                                            <a href="{{ url('/admin/user/' . $user->id . '/view') }}"
+                                                data-toggle="tooltip" data-placement="top" title="Ver perfil">
+                                                <i class="fa-solid fa-eye"></i>
                                             </a>
                                         @endif
 
@@ -95,7 +95,7 @@
                             </tr>
                         @endforeach
                         <tr>
-                            <td colspan="5">
+                            <td colspan="8">
                                 {!! $users->render() !!}
                             </td>
                         </tr>

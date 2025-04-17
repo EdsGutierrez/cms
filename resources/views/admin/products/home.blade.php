@@ -81,33 +81,40 @@
                                 <td width="48">
                                     <a href="{{ url('/uploads/' . $p->file_path . '/' . $p->image) }}"
                                         data-fancybox="gallery">
-                                        <img src="{{ url('/uploads/' . $p->file_path . '/t_' . $p->image) }}" width="48">
+                                        <img src="{{ url('/uploads/' . $p->file_path . '/t_' . $p->image) }}"
+                                            width="48">
                                     </a>
                                 </td>
                                 <td>
-                                    <p style="margin-bottom: 0px;">{{ $p->name }} @if ($p->status == '0') <i class="fas fa-eraser" data-toggle="tooltip" data-placement="top" title="Estado borrador"></i> @endif</p>
-                                    <p>&nbsp;&nbsp;&nbsp;<small><i class="far fa-folder-open"></i> {{ $p->cat->name }} @if ($p->subcategory_id != '0') <i class="fas fa-angle-double-right"></i> {{ $p->getSubcategory->name }} @endif </p></small>
+                                    <p style="margin-bottom: 0px;">{{ $p->name }} @if ($p->status == '0')
+                                            <i class="fas fa-eraser" data-toggle="tooltip" data-placement="top"
+                                                title="Estado borrador"></i>
+                                        @endif
+                                    </p>
+                                    <p>&nbsp;&nbsp;&nbsp;<small><i class="far fa-folder-open"></i> {{ $p->cat->name }}
+                                            @if ($p->subcategory_id != '0')
+                                                <i class="fas fa-angle-double-right"></i>
+                                                {{ $p->getSubcategory->name }}
+                                            @endif
+                                        </small></p>
                                 </td>
-
-
 
                                 <td>
                                     {{ Config('mycms.currency') }} {{ $p->price }}
                                     <!--
-                                        /* @if (!is_null($p->getPrice->min('price')))
-                                            {{ Config('mycms.currency') }} &nbsp; {{ $p->getPrice->min('price') }}
-                                        @endif 
-                                        */
-                                        -->
+                                                    /* @if (!is_null($p->getPrice->min('price')))
+    {{ Config('mycms.currency') }} &nbsp; {{ $p->getPrice->min('price') }}
+    @endif
+                                                    */
+                                                    -->
                                 </td>
 
-                                
+
                                 <td width="160">
                                     <div class="opts">
                                         @if (kvfj(Auth::user()->permissions, 'product_edit'))
-                                            <a href="{{ url('/admin/product/' . $p->id . '/edit') }}"
-                                                data-toggle="tooltip" data-placement="top" title="Editar"
-                                                class="edit">
+                                            <a href="{{ url('/admin/product/' . $p->id . '/edit') }}" data-toggle="tooltip"
+                                                data-placement="top" title="Editar" class="edit">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                         @endif
@@ -133,7 +140,6 @@
                                                     data-placement="top" title="Restaurar" class="btn-deleted restore">
                                                     <i class="fas fa-trash-restore"></i>
                                                 </a>
-
                                             @endif
                                         @endif
                                     </div>

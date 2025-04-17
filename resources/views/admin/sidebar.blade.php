@@ -47,7 +47,7 @@
             @endif
             @if (kvfj(Auth::user()->permissions, 'orders_list'))
             <li>
-                <a href="{{ url('/admin/orders/all') }}" class="lk-orders_list"><i class="fas fa-clipboard-list"></i>Ordenes</a>
+                <a href="{{ url('/admin/orders/all/all') }}" class="lk-orders_list lk-order_view"><i class="fas fa-clipboard-list"></i>Ordenes</a>
             </li>
             @endif
             @if (kvfj(Auth::user()->permissions, 'coverage_list'))
@@ -60,7 +60,7 @@
 
             @if (kvfj(Auth::user()->permissions, 'user_list'))
             <li>
-                <a href="{{ url('/admin/users/all') }}" class="lk-user_list lk-user_edit lk-user_permissions"><i
+                <a href="{{ url('/admin/users/all') }}" class="lk-user_list lk-user_view lk-user_permissions"><i
                         class="fas fa-user-friends"></i>Ususarios</a>
             </li>
             @endif

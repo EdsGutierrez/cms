@@ -12,6 +12,7 @@ use App\Http\Models\Product;
 use App\Http\Models\Inventory;
 use App\Http\Models\variant;
 
+
 use Illuminate\Support\Facades\Config;
 
 class CartController extends Controller
@@ -34,36 +35,29 @@ class CartController extends Controller
         $data = ['order' => $order, 'items' => $items, 'shipping' => $shipping];
         return view('cart', $data);
     }
-    //para enviar y confirmar elmetodo de pagos
+    //para enviar y confirmar el metodo de pagos
     public function postCart(Request $request)
     {
         $order = $this->getUserOrder();
         $order = Order::find($order->id);
-        $order = Order::find(3);
+        //$order = Order::find(1); no deberia estar ahi
         if ($request->input('payment_method') == '0'):
-            $order->o_number = $this->getOrderNumberGenerate();
-            $order->status = '1';
+            $this->getProcessOrder($order->id);
         endif;
         $order->payment_method = $request->input('payment_method');
         $order->user_comment = $request->input('order_msg');
-        //$order->save();
-        //return $order->id;
         if ($order->save()):
+            $order = Order::find($order->id);
             if ($order->payment_method == "0" && $order->status == "1"):
                 $this->getOrderEmailDetails($order->id);
                 return redirect('account/history/order/' . $order->id);
+            else:
+                return redirect('/cart/payment');
             endif;
-            return redirect('/cart/payment');
         endif;
     }
 
-    public function getOrderNumberGenerate()
-    {
-        $userid = Auth::id();
-        $orders = Order::where('status', '>', '0')->count();
-        $orderNumber = $orders + 1;
-        return $orderNumber;
-    }
+    //elimiado generar numero
 
     public function getUserOrder()
     {

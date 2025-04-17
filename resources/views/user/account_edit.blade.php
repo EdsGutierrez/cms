@@ -143,7 +143,12 @@
                                 <span class="input-group-text" id="basic-addon1">
                                     <i class="far fa-keyboard"></i>
                                 </span>
-                                {!! Form::number('year', $birthday[0], ['class' => 'form-control', 'min' => getUserYears()[1], 'max' => getUserYears()[0], 'required']) !!}
+                                {!! Form::number('year', $birthday[0], [
+                                    'class' => 'form-control',
+                                    'min' => getUserYears()[1],
+                                    'max' => getUserYears()[0],
+                                    'required',
+                                ]) !!}
                                 {!! Form::select('month', getMonths('list', null), $birthday[1], ['class' => 'form-select']) !!}
                                 {!! Form::number('day', $birthday[2], ['class' => 'form-control', 'min' => 1, 'max' => 31, 'required']) !!}
                             </div>
@@ -158,7 +163,9 @@
                                 <span class="input-group-text" id="basic-addon1">
                                     <i class="far fa-keyboard"></i>
                                 </span>
-                                {!! Form::select('gender', ['0' => 'Sin especificar', '1' => 'Hombre', '2' => 'Mujer'], Auth::user()->gender, ['class' => 'form-select']) !!}
+                                {!! Form::select('gender', ['0' => 'Sin especificar', '1' => 'Hombre', '2' => 'Mujer'], Auth::user()->gender, [
+                                    'class' => 'form-select',
+                                ]) !!}
                             </div>
                         </div>
                     </div>

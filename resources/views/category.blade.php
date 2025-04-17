@@ -2,7 +2,7 @@
 
 @section('title', 'Tienda - ' . $category->name)
 @section('custom_meta')
-<meta  name="category_id" content="{{ $category->id }}">
+    <meta name="category_id" content="{{ $category->id }}">
 @stop
 
 @section('content')
@@ -10,7 +10,8 @@
         <div class="row">
             <div class="col-md-3 mtop32">
                 <div class="categories_list shadow">
-                    <h2 class="title"><i class="fas fa-folder"></i> Subcategorías <i class="fas fa-chevron-down"></i> {{ $category->name }}</h2>
+                    <h2 class="title"><i class="fas fa-folder"></i> Subcategorías <i class="fas fa-chevron-down"></i>
+                        {{ $category->name }}</h2>
                     <ul>
                         @if ($category->parent != '0')
                             <li><a
@@ -33,8 +34,8 @@
                         @foreach ($categories as $cat)
                             <li>
                                 <a href="{{ url('/store/category/' . $cat->id . '/' . $cat->slug) }}">
-                                    <img src="{{ url('/uploads/' . $cat->file_path . '/' . $cat->icono) }}"
-                                        alt=""> {{ $cat->name }}
+                                    <img src="{{ url('/uploads/' . $cat->file_path . '/' . $cat->icono) }}" alt="">
+                                    {{ $cat->name }}
                                 </a>
                             </li>
                         @endforeach

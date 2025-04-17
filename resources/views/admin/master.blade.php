@@ -31,7 +31,7 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-    <script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"> </script>
+    <script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ url('/static/js/mdslider.js?v=' . time()) }}"></script>
     <script src="{{ url('/static/js/admin.js?v=' . time()) }}"></script>
@@ -63,7 +63,6 @@
             </nav>
 
             <div class="page">
-
                 <div class="container-fluid">
                     <nav aria-label="breadcrumb shadow">
                         <ol class="breadcrumb">

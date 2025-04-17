@@ -108,7 +108,7 @@ class ProductController extends Controller
                     });
                     $img->save($upload_path . '/' . $path . '/t_' . $filename);
                 endif;
-                return redirect('/admin/product/' . $product->id . 'edit')->with('message', 'Guardado con éxito')->with('typealert', 'success');
+                return redirect('/admin/product/' . $product->id . '/edit')->with('message', 'Guardado con éxito')->with('typealert', 'success');
             endif;
         endif;
     }

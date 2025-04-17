@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Http\Models\UserAddress;
+use App\Http\Models\Order;
 use Validator;
 
 
@@ -52,4 +53,10 @@ class User extends Authenticatable
     public function getAddressDefault(){
         return $this->hasOne(UserAddress::class, 'user_id', 'id')->where('default', '1')->with(['getState', 'getCity']);
     }
+
+    //nueva relavion para ver el historial de compras 22/mayo/2024
+    public function getOrders(){
+        return $this->hasMany(Order::class, 'user_id', 'id')->where('status','!=', '0');
+    }
+    
 }

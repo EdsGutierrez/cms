@@ -104,6 +104,7 @@ function user_permissions()
             'title' => ' Módulo de Categorías',
             'keys' => [
                 'user_list' => ' Puede la lista de usuarios',
+                'user_view' => ' Puede Ver el perfil del usuario',
                 'user_edit' => ' Puede editar usuarios',
                 'user_banned' => ' Puede bannear usuarios',
                 'user_permissions' => ' Puede administrar permisos de usuarios',
@@ -131,6 +132,8 @@ function user_permissions()
             'title' => ' Módulo de Ordenes',
             'keys' => [
                 'orders_list' => ' Puede ver el listado de ordenes',
+                'order_view' => ' Puede ver el detalle de una orden',
+                'orders_change_status' => ' Puede cambiar el estado de una orden',
             ]
         ],
         'coverage' => [
@@ -248,7 +251,7 @@ function getConfig($key){
     return json_encode($var);
 }
 
-function getPaymentsMethods($status = null){
+function getPaymentsMethods($method = null){
     $list = [
         '0' => 'Efectivo',
         '1' => 'Transferencia o deposito',
@@ -256,10 +259,10 @@ function getPaymentsMethods($status = null){
         '3' => 'Tarjeta de crédito'
     ];
 
-    if (is_null($status)) :
+    if (is_null($method)) :
         return $list;
     else :
-        return $list[$status];
+        return $list[$method];
     endif;
 }
 
@@ -270,14 +273,29 @@ function getOrderStatus($status = null){
         '2' => 'Pago recibido',
         '3' => 'Procesando orden',
         '4' => 'Orden enviada',
-        '5' => 'Orden entregada',
-        '6' => 'Orden rechazada'
+        '5' => 'Listo para recoger',
+        '6' => 'Orden entregada',
+        '100' => 'Orden rechazada'
     ];
 
     if (is_null($status)) :
         return $list;
     else :
         return $list[$status];
+    endif;
+}
+
+//FUNCION PARA EL HISTORIAL DE COMPRAS
+function getOrderType($type = null){
+    $list = [
+        '0' => 'Entrega a domicilio',
+        '1' => 'TO GO'
+    ];
+
+    if (is_null($type)) :
+        return $list;
+    else :
+        return $list[$type];
     endif;
 }
 

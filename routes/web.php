@@ -56,6 +56,8 @@ Route::get('/account/address', 'UserController@getAccountAddress')->name('accoun
 Route::post('/account/address/add', 'UserController@postAccountAddressAdd')->name('account_address');
 Route::get('/account/address/{address}/setdefault', 'UserController@getAccountAddressSetDefault')->name('account_address');
 Route::get('/account/address/{address}/delete', 'UserController@getAccountAddressDelete')->name('account_address');
+Route::get('/account/history/orders', 'UserOrderController@getHistory')->name('account_user_orders_history'); //pestaña de historial de compras
+Route::get('/account/history/order/{order}', 'UserOrderController@getOrder')->name('account_user_order_details'); //Detalles de la orden del historial
 
 //Ajax Api Router : Para desqe aqui podmao llamar a diferencias API
 Route::get('/md/api/load/products/{section}', 'ApiJsController@getProductsSection');

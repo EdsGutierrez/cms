@@ -1,0 +1,6 @@
+PERMISOS
+{"dashboard":"true","dashboard_small_stats":"true","dashboard_sell_today":"true","products":"true","product_add":"true","product_edit":"true","product_search":"true","product_delete":"true","product_gallery_add":"true","product_gallery_deleted":"true","product_inventory":"true","categories":"true","category_add":"true","category_edit":"true","category_delete":"true","user_list":"true","user_edit":"true","user_banned":"true","user_permissions":"true","sliders_list":"true","slider_add":"true","slider_edit":"true","slider_delete":"true","configuracion":"true","orders_list":"true","coverage_list":"true","coverage_add":"true","coverage_edit":"true","coverage_delete":"true"}
+
+
+
+Video 160
